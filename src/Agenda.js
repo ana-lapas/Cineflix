@@ -2,18 +2,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Agenda({schedule}){
-    console.log("Entrou no agenda")
-    console.log(schedule)
     return(
     <DiaHorarios>        
         <p>{schedule.weekday} - {schedule.date}</p>
         <ul>
             { schedule.showtimes.map((i) =>
-            <li key={i.id}>
-                <Link to={`/assentos/${i.id}`}>
-                    <div onClick={() => alert(i.id)}>{i.name}</div>
-                </Link>
-            </li> )}
+            <li key={i.id}><Link to={`/assentos/${i.id}`}>{i.name}</Link></li> )}
         </ul>
     </DiaHorarios>        
     )
@@ -27,7 +21,7 @@ export default function Agenda({schedule}){
         align-items: center;
         a{
             text-decoration: none;
-            color:#293845;
+            color:#ffffff;
         }
         p{
             color:#293845;
@@ -62,5 +56,6 @@ export default function Agenda({schedule}){
             justify-content: center;
             align-items: center;   
             margin-left: 25px;
+            margin-bottom: 10px;
         }
 `

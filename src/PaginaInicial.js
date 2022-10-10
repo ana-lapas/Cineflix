@@ -5,16 +5,14 @@ import Poster from './Poster';
 
 export default function PaginaInicial(){
     const [movies, setMovies] = useState(undefined);
-    console.log(movies)
     useEffect(() => {
-        const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
+        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
 
         promise.then(resposta => { 
             setMovies(resposta.data);
         })
 
         promise.catch(err => {
-            console.log(err.response.data)
             if(err) alert("Erro na requisição! Tente de novo");
         })
     }, []);

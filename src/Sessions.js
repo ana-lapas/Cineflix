@@ -6,20 +6,17 @@ import Agenda from "./Agenda";
 
 export default function Sessions() {
     const { idFilme } = useParams();
-    console.log(idFilme)// Verificar se pegou o mesmo id do filme que eu preciso
     const [movieSessions, setTimeSessions] = useState([]); //Pegar a imagem do objeto para passar para o poster
 
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
 
         promise.then((resposta) => {
-            console.log(resposta.data)
             setTimeSessions(resposta.data)
         });
 
         promise.catch((erro) => {
             if(erro) alert("Erro na requisição! Tente de novo");
-            console.log(erro.response.data)
         })
     }, []);
 
