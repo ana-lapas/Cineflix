@@ -10,9 +10,11 @@ export default function SeatsSelection() {
     const [name, setName] = useState("");
     const [cpf, setCPF] = useState("");
     const [selectedSeats, setSelectedSeats] = useState([]); //Verificar disponibilidade de assentos
+    console.log(selectedSeats)
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promise.then((resposta) => {
+            console.log(resposta)
             setSeatsTotal(resposta.data);
 
         })
